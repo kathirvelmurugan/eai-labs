@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import AircraftIcon from "../AircraftIcon";
 
 const Contact = () => {
@@ -32,12 +33,12 @@ const Contact = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
         >
-          <a
-            href="mailto:hello@everydayailabs.com"
+          <Link
+            to="/selector"
             className="inline-block border border-foreground px-8 py-4 text-foreground text-base font-light hover:bg-foreground hover:text-background transition-colors duration-300"
           >
             start the conversation
-          </a>
+          </Link>
         </motion.div>
 
         <motion.div
