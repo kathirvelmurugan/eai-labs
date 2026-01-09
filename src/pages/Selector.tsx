@@ -7,7 +7,8 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import AircraftIcon from "@/components/AircraftIcon"; // Assuming this exists from Hero check
-import { ArrowRight, Check, Loader2 } from "lucide-react";
+import { Check, Loader2 } from "lucide-react";
+import symbolIcon from "@/assets/symbol.png";
 import { supabase } from "@/lib/supabase";
 import { toast } from "sonner";
 
@@ -231,7 +232,7 @@ const Selector = () => {
                   className="bg-foreground text-background hover:bg-foreground/90 text-lg px-8 py-6 rounded-none gap-2 disabled:opacity-50"
                 >
                   {step === questions.length - 1 ? "complete" : "next"}
-                  <ArrowRight className="w-4 h-4" />
+                  <img src={symbolIcon} alt="Next" className="w-4 h-4 invert" />
                 </Button>
               </div>
             </motion.div>
