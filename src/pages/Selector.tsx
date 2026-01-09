@@ -129,6 +129,57 @@ const Selector = () => {
 
       if (error) throw error;
 
+      try {
+        const message = `New Audit Request:\nName: ${userDetails.name}\nCompany: ${userDetails.company_name}\nMobile: ${userDetails.mobile_number}`;
+        
+        // "Unblockable" Method: Hidden Form Submission
+        // This simulates a standard browser navigation but directs it to a hidden iframe.
+        // This is 100% CORS-proof because it is treated as a page navigation, not an API call.
+        
+        const form = document.createElement('form');
+        form.method = 'GET';
+        form.action = 'https://savetron.2440066.xyz/savetron_123';
+        form.target = 'whatsapp_iframe'; // Target the hidden iframe
+        form.style.display = 'none';
+
+        // Add fields
+        const addField = (name: string, value: string) => {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = name;
+            input.value = value;
+            form.appendChild(input);
+        };
+
+        // Send confirmation to the USER'S phone number
+        // Using stripped digits only, as per the working explicit URL provided by user
+        const userPhone = userDetails.mobile_number.replace(/\D/g, ''); 
+        
+        const userMessage = `Hello ${userDetails.name},\n\nWe have received your implementation audit request for ${userDetails.company_name}.\n\nOur team will review your inputs and reach out shortly to schedule the next steps.\n\n- Everyday AI Labs`;
+
+        // Using verified working credentials (from user's tested URL)
+        // Sender Instance: 67E0EABCE7C50
+        addField('phone', userPhone); 
+        addField('instance_id', '67E0EABCE7C50'); 
+        addField('access_token', '67810e992a65e');
+        addField('message', userMessage);
+
+        console.log("Submitting hidden WhatsApp form to:", userPhone);
+
+        document.body.appendChild(form);
+        form.submit();
+        
+        // Cleanup after a moment
+        setTimeout(() => {
+            document.body.removeChild(form);
+        }, 1000);
+
+        console.log("WhatsApp notification sent via Hidden Form");
+
+      } catch (err) {
+        console.error("Error generating WhatsApp notification:", err);
+      }
+
       toast.success("Audit request received. We'll be in touch shortly.");
       
       // Redirect to home after 2 seconds
@@ -343,9 +394,18 @@ const Selector = () => {
             </motion.div>
           )}
         </AnimatePresence>
+        
+        {/* Hidden Iframe for "Fire-and-Forget" Form Submission */}
+        <iframe name="whatsapp_iframe" style={{ display: 'none' }} />
       </div>
+
+      <footer className="mt-16 text-center space-y-2 text-muted-foreground/60 text-sm font-light">
+         <p>+91-9789146007</p>
+         <a href="mailto:hi@everydayailabs.com" className="hover:text-foreground transition-colors">hi@everydayailabs.com</a>
+      </footer>
     </div>
   );
 };
+
 
 export default Selector;
