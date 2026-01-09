@@ -162,7 +162,7 @@ const Selector = () => {
             return `*${i + 1}. ${q.text}*\n${answerLabel}`;
         }).join('\n\n');
 
-        const userMessage = `Hello ${userDetails.name},\n\nWe have received your implementation audit request for *${userDetails.company_name}*.\n\n*Your Diagnosis:*\n\n${diagnosisDetails}\n\nOur team will review your inputs and reach out shortly to schedule the next steps.\n\n- *Everyday AI Labs*`;
+        const userMessage = `Hello ${userDetails.name},\n\nWe have received your implementation audit request for *${userDetails.company_name}*.\n\n*Your Diagnosis:*\n\n${diagnosisDetails}\n\nOur team will review your inputs and reach out shortly to schedule the next steps and fix the implementation gap.\n\n- *everyday ai labs*`;
 
         // Using verified working credentials (from user's tested URL)
         // Sender Instance: 67E0EABCE7C50

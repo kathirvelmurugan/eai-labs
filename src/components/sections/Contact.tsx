@@ -50,7 +50,13 @@ const Contact = () => {
           <p className="text-muted-foreground/50 text-sm font-light">
             everyday ai labs
           </p>
-          <p className="text-muted-foreground/40 text-xs font-light">
+          <div className="space-y-1">
+             <p className="text-muted-foreground/40 text-xs font-light">+91-9789146007</p>
+             <a href="mailto:hi@everydayailabs.com" className="text-muted-foreground/40 text-xs font-light hover:text-foreground transition-colors block">
+               hi@everydayailabs.com
+             </a>
+          </div>
+          <p className="text-muted-foreground/40 text-xs font-light pt-2">
             we fix the implementation gap
           </p>
         </motion.div>
